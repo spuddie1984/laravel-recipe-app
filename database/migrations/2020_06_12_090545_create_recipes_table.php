@@ -15,6 +15,12 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('title');
+            $table->string('cooking_time');
+            $table->json('ingredients');
+            $table->json('methods');
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

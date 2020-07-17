@@ -8,6 +8,18 @@ A RESTful Recipe App to collect my favourite recipes so i can view them for late
 - User Authentication, Users can save and edit their own recipes.
 - Obviously read, edit, delete and add recipe functionality (RESTful)
 
+### Landing Page Features
+
+- Recently Added Recipes (by means of pictures) 
+- Recipe Categories
+- Search Functionality
+
+### Logged In User Features
+
+- Add personalized notes to recipes added by the user
+- delete update recipes added by the user
+- add new recipes
+
 ### Databases
 
 - Users DB - Already setup automatically by laravel auth command (add later)
@@ -40,7 +52,16 @@ Will add more features as the app grows
 - Add Relationships to Users table and Recipes table
 - Start adding recipe routes to routes file
 - Add recipe index view
-
-#### 2nd Commit - Recipe CRUD Routes and Views
 - Add Font Awesome via npm
 
+#### 2nd Commit - Recipe CRUD Routes and Views
+
+- Create CRUD routes and views (Create, Read, Update, Destroy)
+- Add custom tagged inputs for the recipe create and update views
+- Add custom js script to implement tagged inputs
+- Image upload ability
+- Add bootstrap scss files 
+- Add images to public folder for homepage styling
+- style Home page (add navbar and footer)
+- style recipe index view 
+- style create edit views

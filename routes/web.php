@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecipesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,16 +12,34 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+
+| name         |       url        | verb  |            Decription                    |
+|--------------|------------------|-------|------------------------------------------|
+|APP INDEX     | /                | GET   | App Home Page                            |
+|RECIPE INDEX  | /recipes         | GET   | Displays a list of all recipes           |
+|NEW           | /recipes/new     | GET   | Displays a form to add a new recipe      |
+|STORE         | /recipes         | POST  | Add a new recipe to the DB               |
+|SHOW          | /recipes/:id     | GET   | Show info about one recipe only          |
+|EDIT          | /recipes/:id/edit| GET   | Show edit form for one recipe            |
+|UPDATE        | /recipes/:id     | PUT   | Update a recipe, then redirect somewhere |
+|DESTROY       | /recipes/:id     | DELETE| Delete a recipe, then redirect somewhere |
+
 */
 
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {return view('welcome');})->name('home');
 
-// Recipe Routes
+// Recipe CRUD Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/recipes', 'RecipeController@index')->name('recipes.index');
-    Route::get('/recipes/new', 'RecipeController@create')->name('recipes.create');
-    Route::post('/recipes', 'RecipeController@store')->name('recipes.store');
+
+    Route::get('/recipes', 'RecipesController@index')->name('recipes.index');
+    Route::get('/recipes/new', 'RecipesController@create')->name('recipes.create');
+    Route::post('/recipes', 'RecipesController@store')->name('recipes.store');
+    Route::get('recipes/{id}', 'RecipesController@show')->name('recipes.show');
+    Route::get('recipes/{id}/edit', 'RecipesController@edit')->name('recipes.edit');
+    Route::put('recipes/{id}', 'RecipesController@update')->name('recipes.update');
+    Route::delete('recipes/{id}', 'RecipesController@destroy')->name('recipes.destroy');
+
 });

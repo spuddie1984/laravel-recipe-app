@@ -1,100 +1,129 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('content')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<header id="homepage-header" class="container-fluid">
+    <div class="header-overlay">
+        <h1>My Recipe Collection</h1>
+        <p>Collect your favourite Recipes and store them here for later use!</p>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+        <form class="form-inline" action="" method="get">
+            <div class="form-group d-flex justify-content-center mb-2">
+                <label for="searchRecipes" class="sr-only">Search for a Recipe</label>
+                <input type="text" class="form-control" id="SearchRecipes" placeholder="Search for a Recipe">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</header>
+<section id="featured-recipes-background">
+    <div id="featured-recipes" class="container">
+        <div class="row">
+            <!-- feature 3 recently added Recipes  -->
+            <div class="col-md-4">
+                <a href="#">
+                    <div class="featured-recipes-image-div">
+                        <span class="featured-recipes-image-overlay">Featured Recipe</span>
+                        <img class="img-fluid" src="{{ asset('images/5-ingredient-meatball-carbonara.jpg') }}" alt="">
+                        <h2 class="title-overlay">5 Ingredient Meatball Carbonara</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#">
+                    <div class="featured-recipes-image-div">
+                        <span class="featured-recipes-image-overlay">Featured Recipe</span>
+                        <img class="img-fluid" src="{{ asset('images/golden-syrup-anzac-tart.jpg') }}" alt="">
+                        <h2 class="title-overlay">Golden Syrup Anzac Tart</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#">
+                    <div class="featured-recipes-image-div">
+                        <span class="featured-recipes-image-overlay">Featured Recipe</span>
+                        <img class="img-fluid" src="{{ asset('images/ricotta-spinach-gnocchi-bake.jpg') }}" alt="">
+                        <h2 class="title-overlay">Ricotta Spinach Gnocchi Bake</h2>
+                    </div>
+                </a>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</section>
+<section id="recipe-categories" class="container">
+    <!-- Recipe Categories (Mains, Desert, Appetisers, Salads, Soups, Breakfast) -->
+    <h2>Recipe Categories</h2>
+    <p>View Recipes based on Category</p>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/mains.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Mains</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/dessert.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Desserts</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/appetiser.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Appetisers</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/salad.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Salads</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/soup.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Soups</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#">
+                <div class="categories-image-div">
+                    <img class="img-fluid" src="{{ asset('images/breakfast.jpg') }}" alt="">
+                    <div class="categories-text-overlay">
+                        <h3>Breakfast</h3>
+                        <span>View Recipes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+@endsection
